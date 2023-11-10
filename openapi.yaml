@@ -1,55 +1,30 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function - OpenAPI 3.0
+  title: Dokumen API PortSafe+ Backend - Fahira - OpenAPI 3.0
   description: >-
-    Jelaskan disini apa saja yang perlu dijelaskan
-    termasuk informasi yang diperlukan untuk dinilai
-    term of service isi dari link repo dari swagger ini
+    Backend yang digunakan untuk aplikasi pelaporan observasi K3 
   termsOfService: https://github.com/jscroot/examples/tree/main/api/swagger
   contact:
-    email: awangga@gmail.com
+    email: fahira1678@gmail.com
   license:
-    name: Peda Package
-    url: https://pkg.go.dev/github.com/petapedia/peda
+    name: Port Package
+    url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
   version: 1.0.11
 externalDocs:
   description: Repo GCF
-  url: https://petapedia.github.io/gcf/
+  url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
 servers:
   - url: https://asia-southeast2-awangga.cloudfunctions.net
 tags:
-  - name: data
-    description: Data Geo Spasial
+  - name: Register
+    description: Register to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/get/
-  - name: auth
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/
-  - name: user
+      url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
+  - name: Login
     description: Get Token and Authorize
 paths:
-  /petapedia:
-    get:
-      tags:
-        - data
-      summary: Get Data Geospasial
-      description: List Data Geospasial
-      operationId: getGeoJSON
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Peta'
-        '400':
-          description: Invalid status value
-  /petapedia-post:
+  /PortRegister:
     post:
       tags:
         - auth
@@ -75,24 +50,7 @@ paths:
             - write:apiKey
             - read:apiKey
 components:
-  schemas:
-    Peta:
-      type: object
-      properties:
-        type:
-          type: string
-        geometry:
-          type: object
-          properties:
-            type: 
-              type: string
-            coordinates: 
-              type: array
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
+  schemas:   
     Auth:
       type: object
       properties:
