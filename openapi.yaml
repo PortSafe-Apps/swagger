@@ -23,6 +23,9 @@ tags:
       url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
   - name: Login
     description: Get Token and Authorize
+    externalDocs:
+    description: Deskripsi dan Kode Program
+    url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
 paths:
   /PortRegister:
     post:
