@@ -49,9 +49,27 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+   /login:
+    post:
+      tags:
+        - user
+      summary: Login user 
+      description: Get Token and Authorize
+      operationId: auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login' # Gunakan skema yang sesuai di sini
+      responses:
+        '201':
+          description: Data successfully login
+        '400':
+          description: Invalid input or request body
 components:
   schemas:   
-    Auth:
+    Login:
       type: object
       properties:
         username:
