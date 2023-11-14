@@ -24,8 +24,8 @@ tags:
   - name: Login
     description: Get Token and Authorize
     externalDocs:
-    description: Deskripsi dan Kode Program
-    url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
+      description: Deskripsi dan Kode Program
+      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
 paths:
   /PortRegister:
     post:
