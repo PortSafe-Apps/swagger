@@ -49,7 +49,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /login:
+  /PortLogin:
     post:
       tags:
         - Login
