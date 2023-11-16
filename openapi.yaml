@@ -56,28 +56,20 @@ paths:
     post:
       tags:
         - Login
-      summary: Login pengguna
-      description: Dapatkan Token dan Otorisasi berdasarkan peran pengguna
+      summary: Login user 
+      description: Get Token and Authorize
       operationId: auth
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/Login' # Gunakan skema yang sesuai di sini
       responses:
         '201':
-          description: Data berhasil login
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
+          description: Data successfully login
         '400':
-          description: Input tidak valid atau badan permintaan tidak sesuai
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
+          description: Invalid input or request body
 components:
   schemas:   
     Login:
@@ -101,12 +93,6 @@ components:
         token:
           type: string
           example: fehguy
-        role:
-          type: string  # Sesuaikan tipe data dengan yang sesuai dengan peran
-          example: admin  # Ganti dengan nilai peran yang sesuai
-        role_message:
-          type: string
-          example: "Selamat datang, Anda berhasil login sebagai admin"  # Ganti dengan pesan sesuai dengan peran
   requestBodies:
     AuthReq:
       description: Request Authentication
