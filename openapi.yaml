@@ -80,7 +80,7 @@ paths:
             - read:apiKey
 components:
   schemas:   
-     Login:
+    Login:
       type: object
       properties:
         username:
