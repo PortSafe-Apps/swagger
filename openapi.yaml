@@ -53,6 +53,7 @@ paths:
             - write:apiKey
             - read:apiKey
   paths:
+  paths:
   /PortLogin:
     post:
       tags:
@@ -73,10 +74,22 @@ paths:
           required: true
           schema:
             type: string
-            enum: [admin, user]
       responses:
         '201':
           description: Data successfully login
+          content:
+            application/json:
+              examples:
+                admin:
+                  value:
+                    status: true
+                    message: Admin successfully logged in
+                    token: <admin_token_here>
+                user:
+                  value:
+                    status: true
+                    message: User successfully logged in
+                    token: <user_token_here>
         '400':
           description: Invalid input or request body
       security:
