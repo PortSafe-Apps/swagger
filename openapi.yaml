@@ -52,7 +52,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  paths:
+paths:
   /PortLogin:
     post:
       tags:
