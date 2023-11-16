@@ -52,24 +52,37 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+  paths:
   /PortLogin:
     post:
       tags:
         - Login
-      summary: Login user 
-      description: Get Token and Authorize
+      summary: Login user or admin
+      description: Get Token and Authorize based on role
       operationId: auth
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login' # Gunakan skema yang sesuai di sini
+              $ref: '#/components/schemas/Login'
+      parameters:
+        - name: role
+          in: query
+          description: Role of the user (admin or user)
+          required: true
+          schema:
+            type: string
+            enum: [admin, user]
       responses:
         '201':
           description: Data successfully login
         '400':
           description: Invalid input or request body
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
 components:
   schemas:   
     Login:
