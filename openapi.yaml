@@ -56,8 +56,8 @@ paths:
     post:
       tags:
         - Login
-      summary: Login user or admin
-      description: Get Token and Authorize based on role
+      summary: Login pengguna atau admin
+      description: Dapatkan Token dan Otorisasi berdasarkan peran
       operationId: auth
       requestBody:
         required: true
@@ -68,28 +68,19 @@ paths:
       parameters:
         - name: role
           in: query
-          description: Role of the user (admin or user)
+          description: Peran pengguna (admin atau user)
           required: true
           schema:
             type: string
       responses:
         '201':
-          description: Data successfully login
+          description: Data berhasil login
           content:
             application/json:
-              examples:
-                admin:
-                  value:
-                    status: true
-                    message: Admin successfully logged in
-                    token: <admin_token_here>
-                user:
-                  value:
-                    status: true
-                    message: User successfully logged in
-                    token: <user_token_here>
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
         '400':
-          description: Invalid input or request body
+          description: Input tidak valid atau badan permintaan tidak sesuai
       security:
         - token:
             - write:apiKey
