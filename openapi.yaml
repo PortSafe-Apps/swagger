@@ -80,7 +80,7 @@ paths:
             - read:apiKey
 components:
   schemas:   
-    Login:
+     Login:
       type: object
       properties:
         username:
@@ -101,6 +101,12 @@ components:
         token:
           type: string
           example: fehguy
+        role:
+          type: string  # Sesuaikan tipe data dengan yang sesuai dengan peran
+          example: admin  # Ganti dengan nilai peran yang sesuai
+        role_message:
+          type: string
+          example: "Selamat datang, Anda berhasil login sebagai admin"  # Ganti dengan pesan sesuai dengan peran
   requestBodies:
     AuthReq:
       description: Request Authentication
