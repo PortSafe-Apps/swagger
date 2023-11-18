@@ -122,9 +122,6 @@ components:
           Date:
             type: string
             example: "2023-11-18"
-          Comment:
-            type: string
-            example: kamu knp?
           Title:
             type: string
             example: Laporan Kejadian Harian
