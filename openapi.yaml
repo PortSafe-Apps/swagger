@@ -115,13 +115,10 @@ components:
         properties:
           Reportid:
             type: int
-            example: 12345
+            example: "0000-K3-001"
           Date:
             type: string
             example: "2023-11-18"
-          Title:
-            type: string
-            example: Laporan Kejadian Harian
           Supervisorid:
             type: int
             example: 101
