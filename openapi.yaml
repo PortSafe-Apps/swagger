@@ -167,9 +167,6 @@ components:
           CorrectiveAction:
             type: string
             example: Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang.
-          ViolatorName:
-            type: string
-            example: Surya
   requestBodies:
     AuthReq:
       description: Request Authentication
