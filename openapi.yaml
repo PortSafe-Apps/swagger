@@ -113,7 +113,7 @@ components:
     CreateReport:
         type: object
         properties:
-          Reportingid:
+          Reportid:
             type: int
             example: 12345
           Date:
