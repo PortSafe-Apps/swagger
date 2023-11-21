@@ -35,7 +35,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/Register'
       responses:
         '200':
           description: successful operation
@@ -89,27 +89,36 @@ paths:
         - token: []
 components:
   schemas:   
+    Register:
+      type: object
+      properties:
+        nipp:
+          type: string
+          example: "1204044"
+        nama:
+          type: string
+          example: "Fahira"
+        jabatan:
+          type: string
+          example: "Vice President"
+        divisi:
+          type: string
+          example: "Perencanaan Strategi"
+        bidang:
+          type: string
+          example: "Kinerja Perusahaan"  
+        password:
+          type: string
+          example: mawar123
     Login:
       type: object
       properties:
-        username:
+        nipp:
           type: string
-          example: petped
+          example: "1204044"
         password:
           type: string
           example: secret
-    AuthResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
-        token:
-          type: string
-          example: fehguy
     CreateReport:
         type: object
         properties:
