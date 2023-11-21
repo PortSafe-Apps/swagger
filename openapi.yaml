@@ -119,6 +119,18 @@ components:
         password:
           type: string
           example: secret
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: false
+        message:
+          type: string
+          example: fehguy
+        token:
+          type: string
+          example: fehguy      
     CreateReport:
         type: object
         properties:
@@ -173,18 +185,6 @@ components:
           CorrectiveAction:
             type: string
             example: Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang.
-   AuthResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
-        token:
-          type: string
-          example: fehguy
   requestBodies:
     AuthReq:
       description: Request Authentication
