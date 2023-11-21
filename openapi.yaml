@@ -109,10 +109,10 @@ components:
     Login:
       type: object
       properties:
-        Nipp:
+        nipp:
           type: string
           example: "1204044"
-        Password:
+        password:
           type: string
           example: mawar123 
     AuthResponse:
