@@ -30,7 +30,7 @@ paths:
         - Register
       summary: Register get account
       description: Register and Get User Token
-      operationId: authService
+      operationId: register
       requestBody:
         content:
           application/json:
