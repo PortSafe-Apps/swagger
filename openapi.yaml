@@ -88,28 +88,28 @@ components:
     Register:
       type: object
       properties:
-        nipp:
+        Nipp:
           type: string
           example: "1204044"
-        nama:
+        Nama:
           type: string
           example: "Fahira"
-        jabatan:
+        Jabatan:
           type: string
           example: "Vice President"
-        divisi:
+        Divisi:
           type: string
           example: "Perencanaan Strategi"
-        bidang:
+        Bidang:
           type: string
           example: "Kinerja Perusahaan"  
-        password:
+        Password:
           type: string
           example: mawar123
     Login:
       type: object
       properties:
-        nipp:
+        Nipp:
           type: string
           example: "1204044"
         password:
