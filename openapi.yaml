@@ -30,17 +30,21 @@ paths:
         - Register
       summary: Register get account
       description: Register and Get User Token
-      operationId: register
+      operationId: authService
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Register'
       responses:
-        '201':
-          description: Data successfully login
-        '400':
-          description: Invalid input or request body
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
   /PortLogin:
     post:
       tags:
