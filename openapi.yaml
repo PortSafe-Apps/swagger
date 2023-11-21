@@ -41,8 +41,6 @@ paths:
           description: Data successfully login
         '400':
           description: Invalid input or request body
-     security:
-        - token: []
   /PortLogin:
     post:
       tags:
