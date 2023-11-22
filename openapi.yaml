@@ -28,8 +28,8 @@ paths:
     post:
       tags:
         - Register
-      summary: Register get account
-      description: Register and Get User Token
+      summary: Register User Without Token
+      description: Daftar Akun User
       operationId: authService
       requestBody:
         content:
@@ -49,20 +49,45 @@ paths:
     post:
       tags:
         - Login
-      summary: Login user 
-      description: Get Token and Authorize
-      operationId: auth
+      summary: Login get Token
+      description: Login and Get User Token
+      operationId: authService
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login' # Gunakan skema yang sesuai di sini
+              $ref: '#/components/schemas/Login'
       responses:
-        '201':
-          description: Data successfully login
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
+  /GetUserWithToken:
+    get:
+      tags:
+        - Users
+      summary: Get Data User Khusus Admin
+      description: Header auth for admin only
+      operationId: GetdataUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/responseUser'
         '400':
-          description: Invalid input or request body
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
   /CreateReport:
     post:
       tags:
@@ -82,7 +107,9 @@ paths:
         '400':
           description: Invalid input or request body
       security:
-        - token: []
+        - Login:
+          - write:apiKey
+          - read:apiKey
 components:
   schemas:   
     Register:
@@ -115,6 +142,48 @@ components:
         password:
           type: string
           example: mawar123 
+    Response:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: Berhasil Input data
+    responseUser:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: berhasil ambil data
+        data:
+          type: object
+          properties:
+            username:
+              type: string
+              example: "1204044"
+            password:
+              type: string
+              example: hashed password
+            role:
+              type: string
+              example: user
+    ResponseBack:
+          type: object
+          properties:
+            Status:
+              type: integer
+              format: int32
+            Message:
+              type: string
+            Data:
+              type: array
+              items:
+                type: string     
     AuthResponse:
       type: object
       properties:
