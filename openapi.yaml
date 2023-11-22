@@ -18,14 +18,8 @@ servers:
 tags:
    - name: Users
     description: Pengelolaan Data User
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://hrmonitorr.github.io/UsersBackend
   - name: auth
     description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://hrmonitorr.github.io/UsersBackend
 paths:
   /PortRegister:
     post:
