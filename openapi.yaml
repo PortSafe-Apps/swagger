@@ -16,18 +16,21 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-ordinal-stone-389604.cloudfunctions.net
 tags:
-  - name: Register
-    description: Register to Access to API
+   - name: Users
+    description: Pengelolaan Data User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pkg.go.dev/github.com/PortSafe-Apps/portsafebackend
-  - name: Login
-    description: Get Token and Authorize
+      url: https://hrmonitorr.github.io/UsersBackend
+  - name: auth
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://hrmonitorr.github.io/UsersBackend
 paths:
   /PortRegister:
     post:
       tags:
-        - Register
+        - Users
       summary: Register User Without Token
       description: Daftar Akun User
       operationId: authService
@@ -48,7 +51,7 @@ paths:
   /PortLogin:
     post:
       tags:
-        - Login
+        - auth
       summary: Login get Token
       description: Login and Get User Token
       operationId: authService
