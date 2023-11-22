@@ -265,7 +265,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AuthResponse'
-   securitySchemes:
+  securitySchemes:
     Login:
       type: apiKey
       name: Login
