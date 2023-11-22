@@ -16,7 +16,7 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-ordinal-stone-389604.cloudfunctions.net
 tags:
-   - name: Users
+  - name: Users
     description: Pengelolaan Data User
   - name: auth
     description: Auth to Access to API
