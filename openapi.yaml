@@ -114,24 +114,29 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /CreateReport:
+  /InsertDataEmployee:
     post:
       tags:
         - report
-      summary: Create Report Data
+      summary: Insert data Report
       description: Header auth for admin and User
-      operationId: Createdatareport
+      operationId: InsertdataReport
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Report' # Gunakan skema yang sesuai di sini
+              $ref: '#/components/schemas/Report'
       responses:
-        '201':
-          description: Data successfully Create
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseReport'
         '400':
-          description: Invalid input or request body
+          description: Invalid status value
       security:
         - Login:
           - write:apiKey
