@@ -16,15 +16,17 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-ordinal-stone-389604.cloudfunctions.net
 tags:
-  - name: Users
+  - name: users
     description: Pengelolaan Data User
   - name: auth
+    description: Auth to Access to API
+  - name: report
     description: Auth to Access to API
 paths:
   /PortRegister:
     post:
       tags:
-        - Users
+        - users
       summary: Register User Without Token
       description: Daftar Akun User
       operationId: authService
@@ -42,6 +44,55 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
+  /GetUserWithToken:
+    get:
+      tags:
+        - users
+      summary: Get Data User Khusus Admin
+      description: Header auth for admin only
+      operationId: GetdataUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/responseUser'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /deleteuser:
+    delete:
+      tags:
+        - Users
+      summary: delete Khusus Admin
+      description: Header auth for admin only
+      operationId: DeleteUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqUsers'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cred'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
   /PortLogin:
     post:
       tags:
@@ -63,13 +114,40 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /GetUserWithToken:
-    get:
+  /CreateReport:
+    post:
       tags:
-        - Users
-      summary: Get Data User Khusus Admin
-      description: Header auth for admin only
-      operationId: GetdataUser
+        - report
+      summary: Create Report Data
+      description: Header auth for admin and User
+      operationId: Createdatareport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report' # Gunakan skema yang sesuai di sini
+      responses:
+        '201':
+          description: Data successfully Create
+        '400':
+          description: Invalid input or request body
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /one-report:
+    post:
+      tags:
+        - report
+      summary: Get Data Report by reportid
+      description: Header auth for admin and User
+      operationId: GetOneReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestReport'
       responses:
         '200':
           description: successful operation
@@ -78,31 +156,85 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/responseUser'
+                  $ref: '#/components/schemas/ResponseReport'
         '400':
           description: Invalid status value
       security:
         - Login:
           - write:apiKey
           - read:apiKey
-  /CreateReport:
-    post:
+  /get-all-report:
+    get:
       tags:
-        - Reporting
-      summary: Create Reporting Data
-      description: Create Reporting data
-      operationId: Create Reporting
+        - report
+      summary: Get data report
+      description: Header auth for admin and user
+      operationId: GetDataReport
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Report'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /updatedatareport:
+    put:
+      tags:
+        - report
+      summary: Update data report
+      description: Header auth for admin and User
+      operationId: Updatedatareport
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateReport' # Gunakan skema yang sesuai di sini
+              $ref: '#/components/schemas/Report'
       responses:
-        '201':
-          description: Data successfully Create
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseReport'
         '400':
-          description: Invalid input or request body
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey       
+  /delete-report:
+    delete:
+      tags:
+        - report
+      summary: delete data report
+      description: Header auth for admin and User
+      operationId: Deletedatareport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestReport'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cred'
+        '400':
+          description: Invalid status value
       security:
         - Login:
           - write:apiKey
@@ -193,7 +325,35 @@ components:
         token:
           type: string
           example: fehguy      
-    CreateReport:
+    ResponseReport:
+      type: object
+      properties:
+        Status:
+          type: integer
+          format: int32
+        Message:
+          type: string
+        Data:
+          $ref: '#/components/schemas/Report'
+    Cred:
+      type: object
+      properties:
+        Status:
+          type: integer
+          format: int32
+        Message:
+          type: string
+    RequestReport:
+      type: object
+      properties:
+        Reportid:
+          type: string
+    ReqUsers:
+      type: object
+      properties:
+        Username:
+          type: string
+    Report:
         type: object
         properties:
           Reportid:
@@ -202,42 +362,20 @@ components:
           Date:
             type: string
             example: "2023-11-18"
-          Supervisorid:
-            type: int
-            example: 101
-          SupervisorName:
-            type: string
-            example: Budi Santoso
-          SupervisorPosition:
-            type: string
-            example: Supervisor Keselamatan
-          IncidentLocation:
-            type: string
-            example: Branch Belawan
+          Account:
+            $ref: '#/components/schemas/Register'
+          Location:
+            $ref: '#/components/schemas/Location'
           Description:
             type: string
             example: Pada tanggal ini, terjadi insiden kecil di gudang barang. Seorang pekerja menabrak rak penyimpanan, menyebabkan beberapa barang jatuh.
           ObservationPhoto:
             type: string
             example: observasi.jpg
-          PeopleReactions:
-            type: string
-            example: Jatuh ke Lantai
-          PPE:
-            type: string
-            example: Kepala
-          PersonPosition:
-            type: string
-            example: Terjatuh
-          Equipment:
-            type: string
-            example: Tidak Sesuai Dengan Jenis Pekerjaan
-          WorkProcedure:
-            type: string
-            example: Tidak Memenuhi
+          TypeDangerousActions:
+            $ref: '#/components/schemas/TypeDangerousActions'
           Area:
-            type: string
-            example: Gudang
+            $ref: '#/components/schemas/Area'
           ImmediateAction:
             type: string
             example: Tim darurat segera membersihkan area dan mengevaluasi cedera. Pekerja yang terlibat segera mendapatkan pertolongan medis.
@@ -247,6 +385,32 @@ components:
           CorrectiveAction:
             type: string
             example: Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang.
+    Location:
+      type: object
+      properties:
+        LocationId:
+          type: integer
+        LocationName:
+          type: string
+    TypeDangerousActions:
+        type: object
+        properties:
+          TypeId:
+            type: integer
+            format: int32
+          TypeName:
+            type: string
+          SubTypes:
+            type: array
+            items:
+              type: string
+    Area:
+      type: object
+      properties:
+        AreaId:
+          type: integer
+        AreaName:
+          type: string      
   requestBodies:
     AuthReq:
       description: Request Authentication
