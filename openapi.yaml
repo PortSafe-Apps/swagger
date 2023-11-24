@@ -368,8 +368,8 @@ components:
           type: string
           format: date
           example: "2023-11-18"
-        User:
-          $ref: '#/components/schemas/Login'  # Ganti dengan skema User yang sesuai
+        Account:
+          $ref: '#/components/schemas/Register'  
         Location:
           $ref: '#/components/schemas/Location'
         Description:
