@@ -265,5 +265,5 @@ components:
   securitySchemes:
     Login:
       type: apiKey
-      name: PortLogin
+      name: Login
       in: header
