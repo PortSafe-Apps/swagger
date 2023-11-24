@@ -69,7 +69,7 @@ paths:
   /deleteuser:
     delete:
       tags:
-        - Users
+        - users
       summary: delete Khusus Admin
       description: Header auth for admin only
       operationId: DeleteUsers
