@@ -369,7 +369,7 @@ components:
           format: date
           example: "2023-11-18"
         User:
-          $ref: '#/components/schemas/User'  # Ganti dengan skema User yang sesuai
+          $ref: '#/components/schemas/Login'  # Ganti dengan skema User yang sesuai
         Location:
           $ref: '#/components/schemas/Location'
         Description:
