@@ -135,10 +135,10 @@ components:
       properties:
         nipp:
           type: string
-          example: "1204044"
+          example: "admin123"
         password:
           type: string
-          example: mawar123 
+          example: portsafe 
     Response:
       type: object
       properties:
