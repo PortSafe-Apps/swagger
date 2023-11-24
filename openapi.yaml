@@ -359,37 +359,40 @@ components:
         Username:
           type: string
     Report:
-        type: object
-        properties:
-          Reportid:
-            type: int
-            example: "0000-K3-001"
-          Date:
-            type: string
-            example: "2023-11-18"
-          Account:
-            $ref: '#/components/schemas/Register'
-          Location:
-            $ref: '#/components/schemas/Location'
-          Description:
-            type: string
-            example: Pada tanggal ini, terjadi insiden kecil di gudang barang. Seorang pekerja menabrak rak penyimpanan, menyebabkan beberapa barang jatuh.
-          ObservationPhoto:
-            type: string
-            example: observasi.jpg
-          TypeDangerousActions:
+      type: object
+      properties:
+        Reportid:
+          type: string  # Sesuaikan dengan tipe data yang digunakan di Go (string pada contoh Anda)
+          example: "0000-K3-001"
+        Date:
+          type: string
+          format: date
+          example: "2023-11-18"
+        Account:
+          $ref: '#/components/schemas/User'  # Ganti dengan skema User yang sesuai
+        Location:
+          $ref: '#/components/schemas/Location'
+        Description:
+          type: string
+          example: "Pada tanggal ini, terjadi insiden kecil di gudang barang. Seorang pekerja menabrak rak penyimpanan, menyebabkan beberapa barang jatuh."
+        ObservationPhoto:
+          type: string
+          example: "observasi.jpg"
+        TypeDangerousActions:
+          type: array  # Ubah menjadi array karena bisa lebih dari satu TypeDangerousActions
+          items:
             $ref: '#/components/schemas/TypeDangerousActions'
-          Area:
-            $ref: '#/components/schemas/Area'
-          ImmediateAction:
-            type: string
-            example: Tim darurat segera membersihkan area dan mengevaluasi cedera. Pekerja yang terlibat segera mendapatkan pertolongan medis.
-          ImprovementPhoto:
-            type: string
-            example: perbaikan.jpg
-          CorrectiveAction:
-            type: string
-            example: Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang.
+        Area:
+          $ref: '#/components/schemas/Area'
+        ImmediateAction:
+          type: string
+          example: "Tim darurat segera membersihkan area dan mengevaluasi cedera. Pekerja yang terlibat segera mendapatkan pertolongan medis."
+        ImprovementPhoto:
+          type: string
+          example: "perbaikan.jpg"
+        CorrectiveAction:
+          type: string
+          example: "Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang."
     Location:
       type: object
       properties:
