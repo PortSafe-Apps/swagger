@@ -114,7 +114,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /InsertDataEmployee:
+  /CreateReport:
     post:
       tags:
         - report
