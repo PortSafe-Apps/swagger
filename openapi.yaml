@@ -23,7 +23,7 @@ tags:
   - name: report
     description: Auth to Access to API
 paths:
-  /PortRegister:
+  /register:
     post:
       tags:
         - users
@@ -44,7 +44,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /GetUserWithToken-1:
+  /getUser:
     get:
       tags:
         - users
@@ -93,7 +93,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /PortLogin-1:
+  /login:
     post:
       tags:
         - auth
@@ -114,7 +114,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /CreateReport-1:
+  /InsertReport:
     post:
       tags:
         - report
