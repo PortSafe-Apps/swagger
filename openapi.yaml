@@ -397,15 +397,14 @@ components:
       type: object
       properties:
         LocationId:
-          type: integer
+          type: string
         LocationName:
           type: string
     TypeDangerousActions:
         type: object
         properties:
           TypeId:
-            type: integer
-            format: int32
+            type: string
           TypeName:
             type: string
           SubTypes:
@@ -416,7 +415,7 @@ components:
       type: object
       properties:
         AreaId:
-          type: integer
+          type: string
         AreaName:
           type: string      
   requestBodies:
