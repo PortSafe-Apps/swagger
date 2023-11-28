@@ -44,7 +44,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /GetUserWithToken:
+  /GetUserWithToken-1:
     get:
       tags:
         - users
@@ -93,7 +93,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /PortLogin:
+  /PortLogin-1:
     post:
       tags:
         - auth
@@ -114,7 +114,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /InsertDataEmployee:
+  /CreateReport-1:
     post:
       tags:
         - report
