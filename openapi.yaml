@@ -267,6 +267,9 @@ components:
         password:
           type: string
           example: mawar123
+        role:
+          type: string
+          example: admin/user  
     Login:
       type: object
       properties:
@@ -358,6 +361,18 @@ components:
       properties:
         Username:
           type: string
+    Account:
+      type: object
+      properties:
+        nama:
+          type: string
+          example: 
+        jabatan:
+          type: string
+          example: 
+        divisi:
+          type: string
+          example: 
     Report:
       type: object
       properties:
@@ -369,7 +384,7 @@ components:
           format: date
           example: "2023-11-18"
         User:
-          $ref: '#/components/schemas/Register'  
+          $ref: '#/components/schemas/Account'  
         Location:
           $ref: '#/components/schemas/Location'
         Description:
@@ -377,11 +392,11 @@ components:
           example: "Pada tanggal ini, terjadi insiden kecil di gudang barang. Seorang pekerja menabrak rak penyimpanan, menyebabkan beberapa barang jatuh."
         ObservationPhoto:
           type: string
-          example: "observasi.jpg"
+          example: observasi.jpg
         TypeDangerousActions:
-          type: array  # Ubah menjadi array karena bisa lebih dari satu TypeDangerousActions
+          type: array 
           items:
-            $ref: '#/components/schemas/TypeDangerousActions'
+            $ref: '#/components/schemas/SelectedTypeDangerousAction'
         Area:
           $ref: '#/components/schemas/Area'
         ImmediateAction:
@@ -389,33 +404,38 @@ components:
           example: "Tim darurat segera membersihkan area dan mengevaluasi cedera. Pekerja yang terlibat segera mendapatkan pertolongan medis."
         ImprovementPhoto:
           type: string
-          example: "perbaikan.jpg"
+          example: perbaikan.jpg
         CorrectiveAction:
           type: string
-          example: "Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang."
+          example: Akan dilakukan pelatihan tambahan untuk operator forklift dan peninjauan ulang prosedur pemindahan barang.
     Location:
       type: object
       properties:
-        LocationId:
-          type: string
         LocationName:
           type: string
     TypeDangerousActions:
-        type: object
-        properties:
-          TypeId:
+      type: object
+      properties:
+        TypeId:
+          type: string
+        TypeName:
+          type: string
+        SubTypes:
+          type: array
+          items:
             type: string
-          TypeName:
+    SelectedTypeDangerousAction:
+      type: object
+      properties:
+        TypeName:
+          type: string
+        SubTypes:
+          type: array
+          items:
             type: string
-          SubTypes:
-            type: array
-            items:
-              type: string
     Area:
       type: object
       properties:
-        AreaId:
-          type: string
         AreaName:
           type: string      
   requestBodies:
