@@ -141,12 +141,12 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /one-report:
+  /GetOneReport:
     post:
       tags:
         - report
       summary: Get Data Report by reportid
-      description: Header auth for admin and User
+      description: Header auth for User
       operationId: GetOneReport
       requestBody:
         content:
@@ -168,7 +168,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /get-all-report:
+  /GetAllReport:
     get:
       tags:
         - report
@@ -190,7 +190,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /updatedatareport:
+  /UpdateReport:
     put:
       tags:
         - report
@@ -217,7 +217,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey       
-  /delete-report:
+  /DeleteReport:
     delete:
       tags:
         - report
