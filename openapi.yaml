@@ -141,7 +141,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /GetOneReport:
+  /oneReport-1:
     post:
       tags:
         - report
@@ -190,7 +190,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /UpdateReport:
+  /UpdateReport-2:
     put:
       tags:
         - report
