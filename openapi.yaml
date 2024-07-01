@@ -93,7 +93,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /login:
+  /login-1:
     post:
       tags:
         - auth
