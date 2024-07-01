@@ -280,12 +280,12 @@ components:
         jabatan:
           type: string
           example: "Vice President"
-        divisi:
-          type: string
-          example: "Perencanaan Strategi"
-        bidang:
-          type: string
-          example: "Kinerja Perusahaan"  
+        Location:
+          type: object
+            properties:
+              LocationName:
+                type: string
+                example: "Branch Belawan"
         password:
           type: string
           example: mawar123
