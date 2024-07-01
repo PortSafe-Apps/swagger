@@ -282,10 +282,10 @@ components:
           example: "Vice President"
         Location:
           type: object
-            properties:
-              LocationName:
-                type: string
-                example: "Branch Belawan"
+          properties:
+            LocationName:
+              type: string
+              example: "Branch Belawan"
         password:
           type: string
           example: mawar123
